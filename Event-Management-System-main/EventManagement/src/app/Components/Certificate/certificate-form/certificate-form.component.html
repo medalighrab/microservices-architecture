@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2>Créer un certificat</h2>
+  <form (ngSubmit)="save()">
+    <div class="form-group mb-3">
+      <label>ID Utilisateur</label>
+      <input [(ngModel)]="certificate.userId" name="userId" class="form-control" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Nom Utilisateur</label>
+      <input [(ngModel)]="certificate.userName" name="userName" class="form-control" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>ID Événement</label>
+      <input [(ngModel)]="certificate.eventId" name="eventId" class="form-control" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Titre Événement</label>
+      <input [(ngModel)]="certificate.eventTitle" name="eventTitle" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Enregistrer</button>
+  </form>
+</div>

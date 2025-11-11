@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2>📜 Liste des certificats</h2>
+  <button class="btn btn-primary mb-3" (click)="goToCreate()">➕ Nouveau certificat</button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Utilisateur</th>
+        <th>Événement</th>
+        <th>PDF</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of certificates">
+        <td>{{ c.id }}</td>
+        <td>{{ c.userName }}</td>
+        <td>{{ c.eventTitle }}</td>
+        <td>
+          <button class="btn btn-link" (click)="openPdf(c)">📄 Voir PDF</button>
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteCertificate(c.id!)">🗑 Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

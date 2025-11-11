@@ -1,0 +1,47 @@
+<p>invoice-list works!</p>
+<div class="invoice-container">
+  <h2>📄 Liste des factures</h2>
+
+  <button routerLink="/invoice/new" class="btn btn-primary mb-3">
+    ➕ Nouvelle facture
+  </button>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Utilisateur</th>
+        <th>Montant</th>
+        <th>Date d’émission</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inv of invoices">
+        <td>{{ inv.id }}</td>
+        <td>{{ inv.user.username }}</td>
+        <td>{{ inv.amount }} DT</td>
+        <td>{{ inv.issued_date | date:'short' }}</td>
+        <td>
+          <span [ngClass]="{
+              'text-warning': inv.status === 'UNPAID',
+              'text-success': inv.status === 'PAID',
+              'text-danger': inv.status === 'CANCELLED'
+          }">{{ inv.status }}</span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary" [routerLink]="['/invoice/edit', inv.id]">
+            ✏️ Modifier
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteInvoice(inv.id!)">
+            🗑️ Supprimer
+          </button>
+            <button class="btn btn-sm btn-outline-success" (click)="generatePDF(inv)">
+            📄 Télécharger PDF
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
